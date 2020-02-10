@@ -23,7 +23,7 @@ void writeValueArray(ValueArray* array, Value value)
 
 void freeValueArray(ValueArray* array)
 {
-    FREE_ARRAY(array, Value, array->capacity);
+    FREE_ARRAY(array->values, Value, array->capacity);
     initValueArray(array);
 }
 
