@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <winnt.h>
 #include "scanner.h"
 #include "common.h"
 
