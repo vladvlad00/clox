@@ -6,10 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void runFile(const char*);
-static char* readFile(const char*);
-
-int main(int argc, const char* argv[])
+static void runFile(const char *);
+static char *readFile(const char *);
+//oare?
+int main(int argc, const char *argv[])
 {
     initVM();
 
@@ -25,22 +25,24 @@ int main(int argc, const char* argv[])
     return 0;
 }
 
-static void runFile(const char* path)
+static void runFile(const char *path)
 {
-    char* source = readFile(path);
+    char *source = readFile(path);
     InterpretResult result = interpret(source);
     free(source);
 
-    if (result == INTERPRET_COMPILE_ERROR) exit(65);
-    if (result == INTERPRET_RUNTIME_ERROR) exit(70);
+    if (result == INTERPRET_COMPILE_ERROR)
+        exit(65);
+    if (result == INTERPRET_RUNTIME_ERROR)
+        exit(70);
 }
 
-static char* readFile(const char* path)
+static char *readFile(const char *path)
 {
-    FILE* file = fopen(path, "rb");
+    FILE *file = fopen(path, "rb");
     if (file == NULL)
     {
-        printf("Couldn't open file\n%s\n",path);
+        printf("Couldn't open file\n%s\n", path);
         exit(74);
     }
 
@@ -48,11 +50,11 @@ static char* readFile(const char* path)
     size_t fileSize = ftell(file);
     rewind(file);
 
-    char* buffer = (char*)malloc(fileSize + 1);
+    char *buffer = (char *)malloc(fileSize + 1);
     size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
     if (bytesRead < fileSize)
     {
-        printf("Couldn't read file\n%s\n",path);
+        printf("Couldn't read file\n%s\n", path);
         exit(74);
     }
     buffer[bytesRead] = '\0';
