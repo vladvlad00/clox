@@ -15,6 +15,10 @@ typedef enum
     OP_SUBTRACT,
     OP_MULTIPLY,
     OP_DIVIDE,
+    OP_NOT,
+    OP_EQUAL,
+    OP_GREATER,
+    OP_LESS,
     OP_RETURN
 } OpCode;
 
@@ -30,14 +34,14 @@ typedef struct
     int capacity;
     int lineCount;
     int lineCapacity;
-    Line* lines;
+    Line *lines;
     ValueArray constants;
-    uint8_t* code;
+    uint8_t *code;
 } Chunk;
 
-void initChunk(Chunk* chunk); //initializes a chunk
-void writeChunk(Chunk* chunk, uint8_t byte, int line); //appends a byte at the end of a chunk
-void freeChunk(Chunk* chunk); //frees a chunk
-int addConstant(Chunk* chunt, Value constant); //adds a constant to the chunk and it returns its index
-int getLine(Chunk* chunk, int offset);
+void initChunk(Chunk *chunk);                          //initializes a chunk
+void writeChunk(Chunk *chunk, uint8_t byte, int line); //appends a byte at the end of a chunk
+void freeChunk(Chunk *chunk);                          //frees a chunk
+int addConstant(Chunk *chunt, Value constant);         //adds a constant to the chunk and it returns its index
+int getLine(Chunk *chunk, int offset);
 #endif

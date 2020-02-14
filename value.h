@@ -13,16 +13,15 @@ typedef enum
 typedef struct
 {
     ValueType type;
-    union
-    {
+    union {
         bool boolean;
         double number;
     } as;
 } Value;
 
-#define BOOL_VAL(value)   ((Value){ VAL_BOOL, { .boolean = value } })
-#define NIL_VAL           ((Value){ VAL_NIL, { .number = 0 } })
-#define NUMBER_VAL(value) ((Value){ VAL_NUMBER, { .number = value } })
+#define BOOL_VAL(value) ((Value){VAL_BOOL, {.boolean = value}})
+#define NIL_VAL ((Value){VAL_NIL, {.number = 0}})
+#define NUMBER_VAL(value) ((Value){VAL_NUMBER, {.number = value}})
 #define IS_BOOL(value) ((value).type == VAL_BOOL)
 #define IS_NIL(value) ((value).type == VAL_NIL)
 #define IS_NUMBER(value) ((value).type == VAL_NUMBER)
@@ -33,12 +32,13 @@ typedef struct
 {
     int capacity;
     int count;
-    Value* values;
+    Value *values;
 } ValueArray;
 
-void initValueArray(ValueArray* array);
-void writeValueArray(ValueArray* array, Value value);
-void freeValueArray(ValueArray* array);
+void initValueArray(ValueArray *array);
+void writeValueArray(ValueArray *array, Value value);
+void freeValueArray(ValueArray *array);
 void printValue(Value value);
+bool valuesEqual(Value a, Value b);
 
 #endif //CLOX_VALUE_H
