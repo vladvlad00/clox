@@ -8,7 +8,7 @@
 
 static void runFile(const char *);
 static char *readFile(const char *);
-//oare?
+
 int main(int argc, const char *argv[])
 {
     initVM();
