@@ -36,7 +36,7 @@ void freeObjects()
     while (object != NULL)
     {
         Obj *next = object->next;
-        freObject(object);
+        freeObject(object);
         object = next;
     }
 }
