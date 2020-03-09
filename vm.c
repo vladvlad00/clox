@@ -180,6 +180,13 @@ static InterpretResult run()
         case OP_LESS:
             BINARY_OP(BOOL_VAL, <);
             break;
+        case OP_PRINT:
+            printValue(pop());
+            printf("\n");
+            break;
+        case OP_POP:
+            pop();
+            break;
         case OP_CONSTANT:
         {
             Value constant = READ_CONSTANT();
@@ -196,8 +203,6 @@ static InterpretResult run()
             push(BOOL_VAL(true));
             break;
         case OP_RETURN:
-            printValue(pop());
-            printf("\n");
             return INTERPRET_OK;
         }
     }

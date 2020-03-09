@@ -55,7 +55,7 @@ ObjString *takeString(const char *chars, int length)
         FREE_ARRAY(chars, char, length+1);
         return interned;
     }
-    return allocateString(chars, length);
+    return allocateString(chars, length, hash);
 }
 
 ObjString *copyString(const char *chars, int length)
